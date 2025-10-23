@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/git_resource/datastruct-by-C/数据结构纲要",
-      "program": "d:/git_resource/datastruct-by-C/数据结构纲要/build/Debug/outDebug",
+      "cwd": "d:/git_resource/datastruct-by-C/linklist",
+      "program": "d:/git_resource/datastruct-by-C/linklist/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
