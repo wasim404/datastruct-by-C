@@ -1,3 +1,4 @@
+//顺序存储栈结构
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
