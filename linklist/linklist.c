@@ -1,8 +1,9 @@
+//单链表
+
 #include"node.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-//gcc .\linklist\linklist.c .\ds_outline\node.c -I ds_outline -o linklist
 
 //定义链表结构体
 typedef struct linklist

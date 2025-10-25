@@ -1,20 +1,8 @@
+//双向链表
+
 #include <stdio.h>
 #include <stdlib.h>
-
-//自定义的数据结构
-typedef struct Eletype
-{
-    int data;
-    char num[5];
-}Eletype;
-
-//双向链表节点结构，更新链表注意说明完整两个指针指向情况
-typedef struct Node
-{
-    Eletype value;
-    struct Node* next; //next指针指向后一个节点
-    struct Node* prev; //prev指针指向前一个节点
-}Node;
+#include"node.h"
 
 //双向链表结构，逻辑上维护头/尾节点
 typedef struct DoublyLinkedList
@@ -23,33 +11,13 @@ typedef struct DoublyLinkedList
     Node* tail; //尾节点
 }DoublyLinkedList;
 
-Node* createNode(Eletype value);
 DoublyLinkedList* createList();
-void insertAtHead(DoublyLinkedList* list,Eletype value); //插入数据函数都要先检查是否为空
-void insertAtTail(DoublyLinkedList* list,Eletype value);
+void insertAtHead(DoublyLinkedList* list,Elemtype value); //插入数据函数都要先检查是否为空
+void insertAtTail(DoublyLinkedList* list,Elemtype value);
 Node* findNode(DoublyLinkedList* list,int data);
 void deleteNode(DoublyLinkedList* list,int data);
 void freeList(DoublyLinkedList* list);
 
-int main()
-{
-
-    return 0;
-}
-
-Node* createNode(Eletype value)
-{
-    Node* newnode = (Node*)malloc(sizeof(Node));
-    if(!newnode)
-    {
-        perror("内存分配失败");
-        exit(EXIT_FAILURE);
-    }
-    newnode->value = value;
-    newnode->prev = NULL; //初始化指针值为NULL
-    newnode->next = NULL;
-    return newnode;
-}
 
 DoublyLinkedList* createList()
 {
@@ -64,7 +32,7 @@ DoublyLinkedList* createList()
     return list;
 }
 
-void insertAtHead(DoublyLinkedList* list,Eletype value)
+void insertAtHead(DoublyLinkedList* list,Elemtype value)
 {
     Node* newnode = createNode(value); //创建新节点
     if(list->head == NULL)
@@ -79,7 +47,7 @@ void insertAtHead(DoublyLinkedList* list,Eletype value)
     }
 }
 
-void insertAtTail(DoublyLinkedList* list,Eletype value)
+void insertAtTail(DoublyLinkedList* list,Elemtype value)
 {
     Node* newnode = createNode(value);
     if(list->tail == NULL)
@@ -113,7 +81,7 @@ void deleteNode(DoublyLinkedList* list,int data)
     Node* target = findNode(list,data); //找到对应的节点
     if(target == NULL)
     {
-        perror("未找到节点");
+        printf("未找到节点\n");
         return;
     }
     if(target == list->head) //要删除的是头节点
@@ -130,7 +98,7 @@ void deleteNode(DoublyLinkedList* list,int data)
     }
     else
     {
-        target->prev->next = target->prev;
+        target->next->prev = target->prev;
     }
     free(target);
 }
@@ -138,9 +106,10 @@ void deleteNode(DoublyLinkedList* list,int data)
 void freeList(DoublyLinkedList* list)
 {
     Node* cur = list->head;
+    Node* next;
     while(cur!=NULL)
     {
-        Node* next = cur->next; //缓存标记待释放节点的下一个节点
+        next = cur->next; //缓存标记待释放节点的下一个节点
         free(cur);
         cur = next; //移动待删除节点指向下一个节点
     }

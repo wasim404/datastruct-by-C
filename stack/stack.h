@@ -2,7 +2,7 @@
 #define STACK_H
 
 #define MAX_SIZE 100
-typedef struct
+typedef struct Stack
 {
     int data[MAX_SIZE];
     int top;
