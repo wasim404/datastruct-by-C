@@ -11,4 +11,5 @@ Node* createNode(Elemtype value)
     newnode->value = value; //给新节点的数据域赋值，注意数据类型要符合你的节点中使用的数据类型
     newnode->prev = NULL; //初始化指针都指向NULL
     newnode->next = NULL;
+    return newnode;
 }
