@@ -29,7 +29,6 @@ void clearList(linklist* list);
 
 int main()
 {
-
     linklist* myList = createList();
     if (!myList) {
         return -1;
